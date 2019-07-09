@@ -1,4 +1,4 @@
-# Very short description of the package
+# Geography CRUD for Laravel Backpack
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/newpixel/laravel-backpack-geography.svg?style=flat-square)](https://packagist.org/packages/newpixel/laravel-backpack-geography)
 [![Build Status](https://img.shields.io/travis/newpixel/laravel-backpack-geography/master.svg?style=flat-square)](https://travis-ci.org/newpixel/laravel-backpack-geography)
