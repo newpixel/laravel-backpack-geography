@@ -2,16 +2,14 @@
 
 namespace Newpixel\GeographyCRUD\App\Http\Controllers\Admin;
 
-
 // VALIDATION: change the requests to match your own file names if you need form validation
+use Backpack\CRUD\CrudPanel;
+use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Newpixel\GeographyCRUD\App\Http\Requests\TouristicZoneRequest as StoreRequest;
 use Newpixel\GeographyCRUD\App\Http\Requests\TouristicZoneRequest as UpdateRequest;
-use Backpack\CRUD\app\Http\Controllers\CrudController;
-use Backpack\CRUD\CrudPanel;
 
 /**
- * Class TouristicZoneCrudController
- * @package App\Http\Controllers\Admin
+ * Class TouristicZoneCrudController.
  * @property-read CrudPanel $crud
  */
 class TouristicZoneCrudController extends CrudController
@@ -24,7 +22,7 @@ class TouristicZoneCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
         $this->crud->setModel('Newpixel\GeographyCRUD\App\Models\TouristicZone');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/touristiczone');
+        $this->crud->setRoute(config('backpack.base.route_prefix').'/touristiczone');
         $this->crud->setEntityNameStrings('touristiczone', 'touristic_zones');
 
         /*

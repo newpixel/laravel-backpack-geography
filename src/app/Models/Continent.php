@@ -3,11 +3,10 @@
 namespace Newpixel\GeographyCRUD\App\Models;
 
 use Backpack\CRUD\CrudTrait;
-use Cviebrock\EloquentSluggable\Sluggable;
-use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
-
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 
 class Continent extends Model
 {
@@ -39,7 +38,7 @@ class Continent extends Model
     protected $dates = ['deleted_at'];
 
     protected $casts = [
-        'meta' => 'object'
+        'meta' => 'object',
     ];
 
     /*
@@ -50,9 +49,10 @@ class Continent extends Model
     public function sluggable()
     {
         return [
-            'slug' => [ 'source' => 'slug_or_name']
+            'slug' => ['source' => 'slug_or_name'],
         ];
     }
+
     /*
     |--------------------------------------------------------------------------
     | RELATIONS
@@ -67,6 +67,7 @@ class Continent extends Model
     {
         return $this->countries->cities;
     }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES
@@ -89,6 +90,7 @@ class Continent extends Model
     {
         return '/continent-'.$this->slug;
     }
+
     /*
     |--------------------------------------------------------------------------
     | MUTATORS

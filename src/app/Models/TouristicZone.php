@@ -3,11 +3,10 @@
 namespace App\Models;
 
 use Backpack\CRUD\CrudTrait;
-use Cviebrock\EloquentSluggable\Sluggable;
-use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
-
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 
 class TouristicZone extends Model
 {
@@ -42,9 +41,10 @@ class TouristicZone extends Model
     public function sluggable()
     {
         return [
-            'slug' => [ 'source' => 'slug_or_name']
+            'slug' => ['source' => 'slug_or_name'],
         ];
     }
+
     /*
     |--------------------------------------------------------------------------
     | RELATIONS
@@ -59,6 +59,7 @@ class TouristicZone extends Model
     {
         return $this->hasMany('App\Models\City', 'touristic_zone_id')->OnlyRomania();
     }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES
@@ -76,6 +77,7 @@ class TouristicZone extends Model
 
         return $slug;
     }
+
     /*
     |--------------------------------------------------------------------------
     | MUTATORS

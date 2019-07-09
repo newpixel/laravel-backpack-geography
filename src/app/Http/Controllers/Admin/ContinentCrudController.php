@@ -3,13 +3,12 @@
 namespace Newpixel\GeographyCRUD\App\Http\Controllers\Admin;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
-use Newpixel\GeographyCRUD\App\Http\Requests\ContinentRequest as UpdateRequest;
-use Newpixel\GeographyCRUD\App\Http\Requests\ContinentRequest as StoreRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
+use Newpixel\GeographyCRUD\App\Http\Requests\ContinentRequest as StoreRequest;
+use Newpixel\GeographyCRUD\App\Http\Requests\ContinentRequest as UpdateRequest;
 
 /**
- * Class ContinentCrudController
- * @package App\Http\Controllers\Admin
+ * Class ContinentCrudController.
  * @property-read CrudPanel $crud
  */
 class ContinentCrudController extends CrudController
@@ -22,7 +21,7 @@ class ContinentCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
         $this->crud->setModel('Newpixel\GeographyCRUD\App\Models\Continent');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/continent');
+        $this->crud->setRoute(config('backpack.base.route_prefix').'/continent');
         $this->crud->setEntityNameStrings('continent', 'continente');
 
         /*
@@ -51,14 +50,13 @@ class ContinentCrudController extends CrudController
             [
                 'type' => 'simple',
                 'name' => 'trashed',
-                'label'=> 'Sterse'
+                'label'=> 'Sterse',
             ],
             false,
             function ($values) {
                 $this->crud->query = $this->crud->query->onlyTrashed();
             }
         );
-
 
         $this->crud->addFields(
             [
@@ -114,7 +112,6 @@ class ContinentCrudController extends CrudController
                 ],
             ]
         );
-
 
         // add asterisk for fields that are required in ContinentRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');

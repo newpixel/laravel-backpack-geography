@@ -3,11 +3,10 @@
 namespace Newpixel\GeographyCRUD\App\Models;
 
 use Backpack\CRUD\CrudTrait;
-use Cviebrock\EloquentSluggable\Sluggable;
-use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
-
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 
 class City extends Model
 {
@@ -22,6 +21,7 @@ class City extends Model
             \Storage::disk('public')->delete($city->feature_image);
         });
     }
+
     /*
     |--------------------------------------------------------------------------
     | GLOBAL VARIABLES
@@ -40,7 +40,7 @@ class City extends Model
 
     protected $casts = [
         'meta' => 'object',
-        'display_zone' => 'array'
+        'display_zone' => 'array',
     ];
 
     /*
@@ -51,9 +51,10 @@ class City extends Model
     public function sluggable()
     {
         return [
-            'slug' => [ 'source' => 'slug_or_name']
+            'slug' => ['source' => 'slug_or_name'],
         ];
     }
+
     /*
     |--------------------------------------------------------------------------
     | RELATIONS
@@ -81,13 +82,14 @@ class City extends Model
 
     public function hotelsAllInclusive()
     {
-         return $this->hasMany('Newpixel\GeographyCRUD\App\Models\Hotel')->isAllInclusive();
+        return $this->hasMany('Newpixel\GeographyCRUD\App\Models\Hotel')->isAllInclusive();
     }
 
     public function offers()
     {
         return $this->hasMany('Newpixel\GeographyCRUD\App\Models\Package');
     }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES
@@ -107,6 +109,7 @@ class City extends Model
     {
         return $query->where('touristic_zone_id', 1);
     }
+
     /*
     |--------------------------------------------------------------------------
     | ACCESORS
@@ -135,8 +138,9 @@ class City extends Model
 
     public function getNameWithCountryAttribute($value)
     {
-        return $this->name . ' - ( ' . $this->country->name . ' )';
+        return $this->name.' - ( '.$this->country->name.' )';
     }
+
     /*
     |--------------------------------------------------------------------------
     | MUTATORS
@@ -144,9 +148,9 @@ class City extends Model
     */
     public function setFeatureImageAttribute($file)
     {
-        $attribute_name = "feature_image";
-        $disk = "public";
-        $destination_path = "cities";
+        $attribute_name = 'feature_image';
+        $disk = 'public';
+        $destination_path = 'cities';
 
         // if the image was erased
         if ($file == null) {

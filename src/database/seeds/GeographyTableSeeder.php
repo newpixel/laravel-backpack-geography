@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\Continent;
 use App\Models\Country;
+use App\Models\Continent;
 use Illuminate\Database\Seeder;
 
 class GeographyTableSeeder extends Seeder
@@ -31,7 +31,7 @@ class GeographyTableSeeder extends Seeder
         foreach ($continents as $conti) {
             Continent::create([
                 'name' => $conti['name'],
-                'image' => $conti['image']
+                'image' => $conti['image'],
             ]);
         }
 
@@ -57,7 +57,6 @@ class GeographyTableSeeder extends Seeder
             //     'slug'             => $country->LinkSeo,
             // ]);
 
-
             DB::table('geo_countries')->insert(
                 [
                     'name'             => $country['name'],
@@ -72,7 +71,6 @@ class GeographyTableSeeder extends Seeder
                     'slug'             => str_slug($country['name']),
                 ]
             );
-
         }
 
         //** Touristic zones seeder */
@@ -94,7 +92,7 @@ class GeographyTableSeeder extends Seeder
                 'active'     => true,
                 'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
-                'slug'       => $zone['slug']
+                'slug'       => $zone['slug'],
             ]);
         }
 

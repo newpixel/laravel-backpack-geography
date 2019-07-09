@@ -3,13 +3,12 @@
 namespace Newpixel\GeographyCRUD\App\Http\Controllers\Admin;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
+use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Newpixel\GeographyCRUD\App\Http\Requests\CountryRequest as StoreRequest;
 use Newpixel\GeographyCRUD\App\Http\Requests\CountryRequest as UpdateRequest;
-use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 /**
- * Class CountryCrudController
- * @package App\Http\Controllers\Admin
+ * Class CountryCrudController.
  * @property-read CrudPanel $crud
  */
 class CountryCrudController extends CrudController
@@ -22,7 +21,7 @@ class CountryCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
         $this->crud->setModel('Newpixel\GeographyCRUD\App\Models\Country');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/country');
+        $this->crud->setRoute(config('backpack.base.route_prefix').'/country');
         $this->crud->setEntityNameStrings('tara', 'tari');
 
         /*
@@ -55,7 +54,7 @@ class CountryCrudController extends CrudController
             ],
             [
                 'name' => 'display_zone',
-                'label' => "Afisare in",
+                'label' => 'Afisare in',
                 'type' => 'array',
                 // 'options' => $this->crud->model::$displayZone,
             ],
@@ -63,13 +62,13 @@ class CountryCrudController extends CrudController
                 'name' => 'image',
                 'label' => 'Imagine',
                 'type' => 'image',
-                'prefix' => 'images/storage/'
+                'prefix' => 'images/storage/',
             ],
             [
                 'name' => 'active',
                 'label' => 'Activ',
                 'type' => 'radio',
-                'options' => [ 0 => "Nu", 1 => "Da"],
+                'options' => [0 => 'Nu', 1 => 'Da'],
                 'inline' => false,
             ],
         ]);
@@ -78,7 +77,7 @@ class CountryCrudController extends CrudController
             [
                 'name' => 'continent',
                 'type' => 'dropdown',
-                'label'=> 'Continent'
+                'label'=> 'Continent',
             ],
             function () {
                 return \Newpixel\GeographyCRUD\App\Models\Continent::whereHas('countries')->pluck('name', 'id')->toArray();
@@ -94,7 +93,7 @@ class CountryCrudController extends CrudController
             [
                 'name' => 'active',
                 'type' => 'dropdown',
-                'label'=> 'Status'
+                'label'=> 'Status',
             ],
             [
                 1 => 'Activ',
@@ -109,7 +108,7 @@ class CountryCrudController extends CrudController
             [
                 'type' => 'simple',
                 'name' => 'trashed',
-                'label'=> 'Sterse'
+                'label'=> 'Sterse',
             ],
             false,
             function ($values) {
@@ -140,14 +139,14 @@ class CountryCrudController extends CrudController
                     'name'              => 'active',
                     'label'             => 'Activ',
                     'type'              => 'radio',
-                    'options'           => [ 0 => "Nu", 1 => "Da"],
+                    'options'           => [0 => 'Nu', 1 => 'Da'],
                     'inline'            => true,
                     'tab'               => 'General',
                     'wrapperAttributes' => ['class' => 'form-group col-md-2'],
                 ],
                 [
                     'name'        => 'display_zone',
-                    'label'       => "Afisare in",
+                    'label'       => 'Afisare in',
                     'type'        => 'select2_from_array',
                     'options'     => $this->crud->model::$displayZone,
                     'allows_null' => false,
@@ -200,8 +199,6 @@ class CountryCrudController extends CrudController
                 ],
             ]
         );
-
-
 
         // add asterisk for fields that are required in CountryRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
