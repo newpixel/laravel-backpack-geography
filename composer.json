@@ -1,0 +1,58 @@
+{
+    "name": "newpixel/laravel-backpack-geography",
+    "description": "Laravel Backpack Geopgraphy",
+    "keywords": [
+        "laravel",
+        "backpack",
+        "geography",
+        "countries",
+        "cities",
+        "continents",
+        "laravel-backpack-geography"
+    ],
+    "homepage": "https://github.com/newpixel/laravel-backpack-geography",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Catalin Prodan",
+            "email": "catalin.prodan@newpixel.ro",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.2",
+        "illuminate/support": "5.8.*",
+        "backpack/crud": "3.5.*|3.6.*",
+        "cviebrock/eloquent-sluggable": "^4.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "3.8.*",
+        "phpunit/phpunit": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Newpixel\\GeographyCRUD\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Newpixel\\GeographyCRUD\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Newpixel\\GeographyCRUD\\GeographyCRUDServiceProvider"
+            ]
+        }
+    }
+}
