@@ -2,10 +2,9 @@
 
 namespace Newpixel\GeographyCRUD\App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
-
-use Newpixel\GeographyCRUD\App\Models\Country;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Newpixel\GeographyCRUD\App\Models\Country;
 
 class CountryController extends Controller
 {

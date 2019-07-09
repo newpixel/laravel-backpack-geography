@@ -3,13 +3,12 @@
 namespace Newpixel\GeographyCRUD\app\Http\Controllers\Admin;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
-use Newpixel\GeographyCRUD\App\Http\Requests\CityRequest as UpdateRequest;
-use Newpixel\GeographyCRUD\App\Http\Requests\CityRequest as StoreRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
+use Newpixel\GeographyCRUD\App\Http\Requests\CityRequest as StoreRequest;
+use Newpixel\GeographyCRUD\App\Http\Requests\CityRequest as UpdateRequest;
 
 /**
- * Class CityCrudController
- * @package App\Http\Controllers\Admin
+ * Class CityCrudController.
  * @property-read CrudPanel $crud
  */
 class CityCrudController extends CrudController
@@ -22,7 +21,7 @@ class CityCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
         $this->crud->setModel('Newpixel\GeographyCRUD\App\Models\City');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/city');
+        $this->crud->setRoute(config('backpack.base.route_prefix').'/city');
         $this->crud->setEntityNameStrings('oras', 'orase');
 
         $this->crud->allowAccess('reorder');
@@ -63,7 +62,7 @@ class CityCrudController extends CrudController
             ],
             [
                 'name' => 'display_zone',
-                'label' => "Afisare in",
+                'label' => 'Afisare in',
                 'type' => 'array',
                 // 'options' => $this->crud->model::$displayZone,
             ],
@@ -71,13 +70,13 @@ class CityCrudController extends CrudController
                 'name'   => 'image',
                 'label'  => 'Imagine',
                 'type'   => 'image',
-                'prefix' => 'images/storage/'
+                'prefix' => 'images/storage/',
             ],
             [
                 'name'    => 'active',
                 'label'   => 'Activ',
                 'type'    => 'radio',
-                'options' => [ 0 => "Nu", 1 => "Da"],
+                'options' => [0 => 'Nu', 1 => 'Da'],
                 'inline'  => false,
             ],
         ]);
@@ -87,7 +86,7 @@ class CityCrudController extends CrudController
                 'name'        => 'country_id',
                 'type'        => 'select2_ajax',
                 'label'       => 'Tara',
-                'placeholder' => 'Alege o tara'
+                'placeholder' => 'Alege o tara',
             ],
             url('/api/country-filter-options'),
             function ($value) {
@@ -99,7 +98,7 @@ class CityCrudController extends CrudController
             [
                 'name'  => 'display_zone',
                 'type'  => 'dropdown',
-                'label' => 'Afisare'
+                'label' => 'Afisare',
             ],
             $this->crud->model::$displayZone,
             function ($value) {
@@ -111,7 +110,7 @@ class CityCrudController extends CrudController
             [
                 'name' => 'active',
                 'type' => 'dropdown',
-                'label'=> 'Status'
+                'label'=> 'Status',
             ],
             [
                 1 => 'Activ',
@@ -126,14 +125,13 @@ class CityCrudController extends CrudController
             [
                 'type' => 'simple',
                 'name' => 'trashed',
-                'label'=> 'Sterse'
+                'label'=> 'Sterse',
             ],
             false,
             function ($values) {
                 $this->crud->query = $this->crud->query->onlyTrashed();
             }
         );
-
 
         $this->crud->addFields(
             [
@@ -158,14 +156,14 @@ class CityCrudController extends CrudController
                     'name'              => 'active',
                     'label'             => 'Activ',
                     'type'              => 'radio',
-                    'options'           => [ 0 => "Nu", 1 => "Da"],
+                    'options'           => [0 => 'Nu', 1 => 'Da'],
                     'inline'            => true,
                     'tab'               => 'General',
                     'wrapperAttributes' => ['class' => 'form-group col-md-2'],
                 ],
                 [
                     'name'              => 'display_zone',
-                    'label'             => "Afisare in",
+                    'label'             => 'Afisare in',
                     'type'              => 'select2_from_array',
                     'options'           => $this->crud->model::$displayZone,
                     'allows_null'       => false,
@@ -224,7 +222,6 @@ class CityCrudController extends CrudController
                 ],
             ]
         );
-
 
         // add asterisk for fields that are required in CityRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');

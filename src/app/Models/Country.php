@@ -3,11 +3,10 @@
 namespace Newpixel\GeographyCRUD\App\Models;
 
 use Backpack\CRUD\CrudTrait;
-use Cviebrock\EloquentSluggable\Sluggable;
-use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
-
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 
 class Country extends Model
 {
@@ -41,7 +40,7 @@ class Country extends Model
 
     protected $casts = [
         'meta' => 'object',
-        'display_zone' => 'array'
+        'display_zone' => 'array',
     ];
 
     /*
@@ -52,9 +51,10 @@ class Country extends Model
     public function sluggable()
     {
         return [
-            'slug' => [ 'source' => 'slug_or_name']
+            'slug' => ['source' => 'slug_or_name'],
         ];
     }
+
     /*
     |--------------------------------------------------------------------------
     | RELATIONS
@@ -79,6 +79,7 @@ class Country extends Model
     {
         return $this->morphToMany('Newpixel\GeographyCRUD\App\Models\Tag', 'taggable');
     }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES
@@ -93,6 +94,7 @@ class Country extends Model
     {
         return $query->where('show_on_homepage', true);
     }
+
     /*
     |--------------------------------------------------------------------------
     | ACCESORS
@@ -118,6 +120,7 @@ class Country extends Model
 
         return $url;
     }
+
     /*
     |--------------------------------------------------------------------------
     | MUTATORS
@@ -126,9 +129,9 @@ class Country extends Model
 
     public function setFeatureImageAttribute($file)
     {
-        $attribute_name = "feature_image";
-        $disk = "public";
-        $destination_path = "countries";
+        $attribute_name = 'feature_image';
+        $disk = 'public';
+        $destination_path = 'countries';
 
         // if the image was erased
         if ($file == null) {

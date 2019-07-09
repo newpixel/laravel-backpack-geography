@@ -2,12 +2,10 @@
 
 namespace Newpixel\GeographyCRUD\App\Http\Controllers\Api;
 
-use Newpixel\GeographyCRUD\App\Models\County;
-use Newpixel\GeographyCRUD\App\Models\City;
-use Illuminate\Support\Facades\Artisan;
-
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Artisan;
+use Newpixel\GeographyCRUD\App\Models\City;
 
 class CityController extends Controller
 {
@@ -44,7 +42,6 @@ class CityController extends Controller
 
         return $options->pluck('NameWithCountry', 'id');
     }
-
 
     public function show($id)
     {
