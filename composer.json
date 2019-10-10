@@ -22,8 +22,7 @@
     ],
     "require": {
         "php": "^7.2",
-        "illuminate/support": "5.8.*",
-        "backpack/crud": "3.5.*|3.6.*",
+        "backpack/crud": "3.5.*|3.6.*|^4.0.0",
         "cviebrock/eloquent-sluggable": "^4.0"
     },
     "require-dev": {
