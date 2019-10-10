@@ -43,12 +43,12 @@ class AddSidebarGeographyLinks extends Command
         $disk = Storage::disk($disk_name);
         $code = '
 {{-- Geography tree links --}}
-<li class="treeview">
-    <a href="#"><i class="fa fa-globe"></i> <span>Geografie</span> <i class="fa fa-angle-left pull-right"></i></a>
-    <ul class="treeview-menu">
-        <li><a href="{{ backpack_url(\'city\') }}"><i class="fa fa-globe"></i> <span>Orase</span></a></li>
-        <li><a href="{{ backpack_url(\'country\') }}"><i class="fa fa-globe"></i> <span>Tari</span></a></li>
-        <li><a href="{{ backpack_url(\'continent\') }}"><i class="fa fa-globe"></i> <span>Continente</span></a></li>
+<li class="nav-item nav-dropdown">
+    <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon fa fa-globe"></i> Geografie</a>
+    <ul class="nav-dropdown-items">
+        <li><a class="nav-link" href="{{ backpack_url(\'city\') }}"><i class="nav-icon fa fa-globe"></i> <span>Orase</span></a></li>
+        <li><a class="nav-link" href="{{ backpack_url(\'country\') }}"><i class="nav-icon fa fa-globe"></i> <span>Tari</span></a></li>
+        <li><a class="nav-link" href="{{ backpack_url(\'continent\') }}"><i class="nav-icon fa fa-globe"></i> <span>Continente</span></a></li>
     </ul>
 </li>';
 

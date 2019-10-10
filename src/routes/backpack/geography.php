@@ -13,7 +13,7 @@ Route::group([
         'prefix' => config('backpack.base.route_prefix', 'admin'),
         'middleware' => ['web', backpack_middleware()],
     ], function () {
-        CRUD::resource('continent', 'ContinentCrudController');
-        CRUD::resource('country', 'CountryCrudController');
-        CRUD::resource('city', 'CityCrudController');
+        Route::crud('continent', 'ContinentCrudController');
+        Route::crud('country', 'CountryCrudController');
+        Route::crud('city', 'CityCrudController');
     });
