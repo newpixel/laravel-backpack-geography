@@ -43,21 +43,45 @@ class TouristicZoneCrudController extends CrudController
         $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
     }
 
+    public function setupListOperation()
+    {
+        // calls to addColumn, addFilter, addButton, etc
+    }
+
+    public function setupCreateOperation()
+    {
+        $this->crud->setValidation(StoreRequest::class);
+
+        // calls to addField
+    }
+
+    public function setupUpdateOperation()
+    {
+        $this->crud->setValidation(UpdateRequest::class);
+
+        // calls to addField
+        $this->setupCreateOperation(); // if it's the same as Create
+    }
+
+    public function setupShowOperation()
+    {
+        // calls to addColumn
+        $this->setupListOperation(); // if you want it to have the same columns as List
+    }
+
     public function store(StoreRequest $request)
     {
-        // your additional operations before save here
-        $redirect_location = parent::storeCrud($request);
-        // your additional operations after save here
-        // use $this->data['entry'] or $this->crud->entry
+        // ..
+        $redirect_location = $this->traitStore($request);
+        // ..
         return $redirect_location;
     }
 
     public function update(UpdateRequest $request)
     {
-        // your additional operations before save here
-        $redirect_location = parent::updateCrud($request);
-        // your additional operations after save here
-        // use $this->data['entry'] or $this->crud->entry
+        // ..
+        $redirect_location = $this->traitUpdate($request);
+        // ..
         return $redirect_location;
     }
 }

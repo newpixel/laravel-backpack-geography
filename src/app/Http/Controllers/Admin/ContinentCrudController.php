@@ -117,6 +117,8 @@ class ContinentCrudController extends CrudController
 
     public function setupUpdateOperation()
     {
+        $this->crud->setValidation(UpdateRequest::class);
+
         // calls to addField
         $this->setupCreateOperation(); // if it's the same as Create
     }

@@ -209,6 +209,8 @@ class CountryCrudController extends CrudController
 
     public function setupUpdateOperation()
     {
+        $this->crud->setValidation(UpdateRequest::class);
+
         // calls to addField
         // $this->crud->setValidation(UpdateRequest::class);
 

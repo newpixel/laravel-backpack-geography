@@ -232,6 +232,8 @@ class CityCrudController extends CrudController
     public function setupUpdateOperation()
     {
         // calls to addField
+        $this->crud->setValidation(UpdateRequest::class);
+
         $this->setupCreateOperation(); // if it's the same as Create
     }
 
