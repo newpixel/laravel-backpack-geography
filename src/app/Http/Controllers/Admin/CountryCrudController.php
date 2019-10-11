@@ -32,7 +32,7 @@ class CountryCrudController extends CrudController
 
     public function setupListOperation()
     {
-    // calls to addColumn, addFilter, addButton, etc
+        // calls to addColumn, addFilter, addButton, etc
         $this->crud->addColumns([
             [
                 'name' => 'row_number',
@@ -115,7 +115,6 @@ class CountryCrudController extends CrudController
                 $this->crud->query = $this->crud->query->onlyTrashed();
             }
         );
-
     }
 
     public function setupCreateOperation()
@@ -206,7 +205,6 @@ class CountryCrudController extends CrudController
                 ],
             ]
         );
-
     }
 
     public function setupUpdateOperation()

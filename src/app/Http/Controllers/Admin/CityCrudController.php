@@ -131,7 +131,6 @@ class CityCrudController extends CrudController
                 $this->crud->query = $this->crud->query->onlyTrashed();
             }
         );
-
     }
 
     public function setupCreateOperation()
@@ -228,7 +227,6 @@ class CityCrudController extends CrudController
                 ],
             ]
         );
-
     }
 
     public function setupUpdateOperation()

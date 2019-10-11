@@ -1,8 +1,8 @@
 <?php
 
+use Illuminate\Database\Seeder;
 use Newpixel\GeographyCRUD\App\Models\Country;
 use Newpixel\GeographyCRUD\App\Models\Continent;
-use Illuminate\Database\Seeder;
 
 class GeographyTableSeeder extends Seeder
 {
@@ -97,6 +97,5 @@ class GeographyTableSeeder extends Seeder
         }
 
         //** Cities seeder */
-
     }
 }
