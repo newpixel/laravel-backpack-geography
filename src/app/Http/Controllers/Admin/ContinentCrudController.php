@@ -52,7 +52,6 @@ class ContinentCrudController extends CrudController
                 $this->crud->query = $this->crud->query->onlyTrashed();
             }
         );
-
     }
 
     public function setupCreateOperation()
