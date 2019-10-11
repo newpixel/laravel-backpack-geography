@@ -14,30 +14,20 @@ use Newpixel\GeographyCRUD\App\Http\Requests\ContinentRequest as UpdateRequest;
 class ContinentCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation { store as traitStore; }
+    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation { update as traitUpdate; }
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
 
     public function setup()
     {
-        /*
-        |--------------------------------------------------------------------------
-        | CrudPanel Basic Information
-        |--------------------------------------------------------------------------
-        */
         $this->crud->setModel('Newpixel\GeographyCRUD\App\Models\Continent');
         $this->crud->setRoute(config('backpack.base.route_prefix').'/continent');
         $this->crud->setEntityNameStrings('continent', 'continente');
+    }
 
-        /*
-        |--------------------------------------------------------------------------
-        | CrudPanel Configuration
-        |--------------------------------------------------------------------------
-        */
-
-        // TODO: remove setFromDb() and manually define Fields and Columns
-        // $this->crud->setFromDb();
-
+    public function setupListOperation()
+    {
+        // calls to addColumn, addFilter, addButton, etc
         $this->crud->addColumns([
             [
                 'name' => 'row_number',
@@ -63,6 +53,13 @@ class ContinentCrudController extends CrudController
             }
         );
 
+    }
+
+    public function setupCreateOperation()
+    {
+        $this->crud->setValidation(StoreRequest::class);
+
+        // calls to addField
         $this->crud->addFields(
             [
                 [
@@ -73,7 +70,7 @@ class ContinentCrudController extends CrudController
                     'wrapperAttributes' => ['class' => 'form-group col-md-12'],
                 ],
                 [
-                    'name'              => 'details',
+                    'name'              => 'full_details',
                     'label'             => 'Detalii',
                     'type'              => 'wysiwyg',
                     'tab'               => 'General',
@@ -117,27 +114,33 @@ class ContinentCrudController extends CrudController
                 ],
             ]
         );
+    }
 
-        // add asterisk for fields that are required in ContinentRequest
-        $this->crud->setRequiredFields(StoreRequest::class, 'create');
-        $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
+    public function setupUpdateOperation()
+    {
+        // calls to addField
+        $this->setupCreateOperation(); // if it's the same as Create
+    }
+
+    public function setupShowOperation()
+    {
+        // calls to addColumn
+        $this->setupListOperation(); // if you want it to have the same columns as List
     }
 
     public function store(StoreRequest $request)
     {
-        // your additional operations before save here
-        $redirect_location = parent::storeCrud($request);
-        // your additional operations after save here
-        // use $this->data['entry'] or $this->crud->entry
+        // ..
+        $redirect_location = $this->traitStore($request);
+        // ..
         return $redirect_location;
     }
 
     public function update(UpdateRequest $request)
     {
-        // your additional operations before save here
-        $redirect_location = parent::updateCrud($request);
-        // your additional operations after save here
-        // use $this->data['entry'] or $this->crud->entry
+        // ..
+        $redirect_location = $this->traitUpdate($request);
+        // ..
         return $redirect_location;
     }
 }

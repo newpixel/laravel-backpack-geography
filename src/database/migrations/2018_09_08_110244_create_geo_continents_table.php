@@ -15,9 +15,9 @@ class CreateGeoContinentsTable extends Migration
         Schema::create('geo_continents', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->index();
-            $table->text('details')->nullable();
+            $table->text('full_details')->nullable();
             $table->string('feature_image', 191)->nullable();
-            $table->string('meta')->nullable();
+            $table->text('meta')->nullable();
             $table->string('slug')->index();
             $table->timestamps();
             $table->softDeletes();

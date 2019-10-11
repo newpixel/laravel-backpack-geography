@@ -33,7 +33,7 @@ class Country extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = ['name', 'continent_id', 'operator_code', 'details', 'feature_image', 'display_zone', 'meta', 'show_on_homepage', 'active', 'slug'];
+    protected $fillable = ['name', 'continent_id', 'operator_code', 'full_details', 'feature_image', 'display_zone', 'meta', 'show_on_homepage', 'active', 'slug'];
     protected $fakeColumns = ['meta'];
     // protected $hidden = [];
     protected $dates = ['deleted_at'];
@@ -75,11 +75,6 @@ class Country extends Model
         return $this->hasMany('Newpixel\GeographyCRUD\App\Models\City')->onlyOnSeaside();
     }
 
-    public function tags()
-    {
-        return $this->morphToMany('Newpixel\GeographyCRUD\App\Models\Tag', 'taggable');
-    }
-
     /*
     |--------------------------------------------------------------------------
     | SCOPES
@@ -109,7 +104,7 @@ class Country extends Model
 
     public function getLinkAttribute()
     {
-        return '/oferte/'.$this->slug;
+        return '/t/'.$this->slug;
     }
 
     public function getMainImageAttribute()

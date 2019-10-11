@@ -20,11 +20,11 @@ class CreateGeoCitiesTable extends Migration
             $table->foreign('country_id')->references('id')->on('geo_countries')->onDelete('no action');
             $table->integer('touristic_zone_id')->index()->unsigned()->nullable();
             $table->foreign('touristic_zone_id')->references('id')->on('geo_touristic_zones')->onDelete('no action');
-            $table->text('short_info')->nullable();
-            $table->text('details')->nullable();
+            $table->text('short_details')->nullable();
+            $table->text('full_details')->nullable();
             $table->string('feature_image', 191)->nullable();
             $table->string('display_zone')->nullable();
-            $table->string('meta')->nullable();
+            $table->text('meta')->nullable();
             $table->boolean('active')->default(true);
             $table->string('slug')->index();
             $table->integer('parent_id')->nullable();

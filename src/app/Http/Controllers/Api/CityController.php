@@ -38,9 +38,9 @@ class CityController extends Controller
     public function citiesFilterOptions(Request $request)
     {
         $term = $request->input('term');
-        $options = City::where('name', 'like', '%'.$term.'%')->get();
+        $options = City::where('name', 'like', '%'.$term.'%')->get()->pluck('NameWithCountry', 'id');
 
-        return $options->pluck('NameWithCountry', 'id');
+        return $options;
     }
 
     public function show($id)

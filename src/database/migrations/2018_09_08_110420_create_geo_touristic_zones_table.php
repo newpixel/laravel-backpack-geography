@@ -15,9 +15,9 @@ class CreateGeoTouristicZonesTable extends Migration
         Schema::create('geo_touristic_zones', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->index();
-            $table->text('details')->nullable();
+            $table->text('full_details')->nullable();
             $table->string('feature_image', 191)->nullable();
-            $table->string('meta')->nullable();
+            $table->text('meta')->nullable();
             $table->boolean('active')->default(true);
             $table->string('slug')->index();
             $table->timestamps();

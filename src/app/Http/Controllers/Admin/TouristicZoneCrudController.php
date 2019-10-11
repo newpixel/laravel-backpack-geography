@@ -37,7 +37,6 @@ class TouristicZoneCrudController extends CrudController
         */
 
         // TODO: remove setFromDb() and manually define Fields and Columns
-        $this->crud->setFromDb();
 
         // add asterisk for fields that are required in TouristicZoneRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');

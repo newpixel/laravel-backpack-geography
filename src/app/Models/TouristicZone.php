@@ -24,7 +24,7 @@ class TouristicZone extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = ['name', 'details', 'feature_image', 'meta', 'active', 'slug'];
+    protected $fillable = ['name', 'full_details', 'feature_image', 'meta', 'active', 'slug'];
     protected $fakeColumns = ['meta'];
     // protected $hidden = [];
     protected $dates = ['deleted_at'];

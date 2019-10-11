@@ -33,7 +33,7 @@ class City extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = ['name', 'operator_code', 'country_id', 'touristic_zone_id', 'short_info', 'details', 'feature_image', 'display_zone', 'meta', 'active', 'slug', 'parent_id', 'lft', 'rgt', 'depth'];
+    protected $fillable = ['name', 'operator_code', 'country_id', 'touristic_zone_id', 'short_details', 'full_details', 'feature_image', 'display_zone', 'meta', 'active', 'slug', 'parent_id', 'lft', 'rgt', 'depth'];
     protected $fakeColumns = ['meta'];
     // protected $hidden = [];
     protected $dates = ['deleted_at'];

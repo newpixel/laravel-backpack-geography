@@ -34,6 +34,12 @@ class GeographyCRUDServiceProvider extends ServiceProvider
                 __DIR__.'/database/migrations/' => database_path('migrations'),
             ], 'migrations');
 
+            // Publishing the seeds.
+            $this->publishes([
+                __DIR__.'/database/seeds/' => database_path('seeds'),
+            ], 'seeds');
+
+
             // Publishing the views.
             /*$this->publishes([
                 __DIR__.'/../resources/views' => resource_path('views/vendor/laravel-backpack-geography'),

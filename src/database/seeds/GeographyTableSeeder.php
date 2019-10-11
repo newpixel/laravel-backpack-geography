@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\Country;
-use App\Models\Continent;
+use Newpixel\GeographyCRUD\App\Models\Country;
+use Newpixel\GeographyCRUD\App\Models\Continent;
 use Illuminate\Database\Seeder;
 
 class GeographyTableSeeder extends Seeder
@@ -20,18 +20,18 @@ class GeographyTableSeeder extends Seeder
 
         //** Continents seeder */
         $continents = [
-            ['name' => 'Africa', 'image' => null],
-            ['name' => 'America de Nord', 'image' => null],
-            ['name' => 'America de Sud', 'image' => null],
-            ['name' => 'Asia', 'image' => null],
-            ['name' => 'Australia', 'image' => null],
-            ['name' => 'Europa', 'image' => null],
+            ['name' => 'Africa', 'feature_image' => null],
+            ['name' => 'America de Nord', 'feature_image' => null],
+            ['name' => 'America de Sud', 'feature_image' => null],
+            ['name' => 'Asia', 'feature_image' => null],
+            ['name' => 'Australia', 'feature_image' => null],
+            ['name' => 'Europa', 'feature_image' => null],
         ];
 
         foreach ($continents as $conti) {
             Continent::create([
                 'name' => $conti['name'],
-                'image' => $conti['image'],
+                'feature_image' => $conti['feature_image'],
             ]);
         }
 
@@ -48,7 +48,7 @@ class GeographyTableSeeder extends Seeder
             //     'id'               => $country->id,
             //     'name'             => $country->nume,
             //     'continent_id'     => 1,
-            //     'details'          => $country->descriere,
+            //     'full_details'          => $country->descriere,
             //     'image'            => null,
             //     'active'           => true,
             //     'show_on_homepage' => false,
@@ -61,9 +61,9 @@ class GeographyTableSeeder extends Seeder
                 [
                     'name'             => $country['name'],
                     'continent_id'     => $country['continent'],
-                    'details'          => null,
+                    'full_details'     => null,
                     'operator_code'    => $country['code'],
-                    'image'            => null,
+                    'feature_image'    => null,
                     'active'           => true,
                     'show_on_homepage' => false,
                     'created_at'       => now()->format('Y-m-d H:i:s'),
@@ -75,53 +75,28 @@ class GeographyTableSeeder extends Seeder
 
         //** Touristic zones seeder */
         $zones = [
-            ['id'=> 1, 'name' => 'Litoral', 'details' => null, 'slug'=>'litoral'],
-            ['id'=> 3, 'name' => 'Munte', 'details' => null, 'slug'=>'munte'],
-            ['id'=> 4, 'name' => 'Balneo', 'details' => null, 'slug'=>'balneo'],
-            ['id'=> 5, 'name' => 'Delta', 'details' =>null, 'slug'=>'delta'],
-            ['id'=> 6, 'name' => 'Oras', 'details' => null, 'slug'=>'oras'],
+            ['id'=> 1, 'name' => 'Litoral', 'full_details' => null, 'slug'=>'litoral'],
+            ['id'=> 3, 'name' => 'Munte', 'full_details' => null, 'slug'=>'munte'],
+            ['id'=> 4, 'name' => 'Balneo', 'full_details' => null, 'slug'=>'balneo'],
+            ['id'=> 5, 'name' => 'Delta', 'full_details' =>null, 'slug'=>'delta'],
+            ['id'=> 6, 'name' => 'Oras', 'full_details' => null, 'slug'=>'oras'],
         ];
 
         // $zones = DB::connection('mysql_old')->table('tip_zonaTuristice')->get();
 
         foreach ($zones as $zone) {
             DB::table('geo_touristic_zones')->insert([
-                'id'         => $zone['id'],
-                'name'       => $zone['name'],
-                'details'    => $zone['details'],
-                'active'     => true,
-                'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
-                'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
-                'slug'       => $zone['slug'],
+                'id'           => $zone['id'],
+                'name'         => $zone['name'],
+                'full_details' => $zone['full_details'],
+                'active'       => true,
+                'created_at'   => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at'   => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
+                'slug'         => $zone['slug'],
             ]);
         }
 
         //** Cities seeder */
-        // $cities = DB::connection('mysql_old')->table('orase')->get();
 
-        // foreach ($cities as $city) {
-        //     $exists = Storage::disk('public')->exists('oldimg/statiuni/st_'.$city->imagine);
-
-        //     // daca exista imaginea, o mut in folderul item-ului corespunzator
-        //     if ($exists) {
-        //         //  $folder = \Storage::disk('public')->put("articles/" . $item->id');
-        //         Storage::disk('public')->move('oldimg/statiuni/st_'.$city->imagine, 'cities/st_' . $city->imagine);
-        //     }
-
-        //     DB::connection('mysql')->table('geo_cities')->insert([
-        //         'id'                => $city->id,
-        //         'name'              => $city->nume,
-        //         'touristic_zone_id' => $city->zona_turistica_id,
-        //         'country_id'        => $city->tara_id,
-        //         'short_info'        => $city->descriereMica,
-        //         'details'           => $city->descriere,
-        //         'image'             => 'cities/st_'.$city->imagine,
-        //         'active'            => true,
-        //         'created_at'        => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
-        //         'updated_at'        => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
-        //         'slug'              => $city->LinkSeo,
-        //         'lft'               => $city->ord,
-        //     ]);
-        // }
     }
 }

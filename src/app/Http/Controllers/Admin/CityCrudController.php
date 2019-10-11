@@ -14,9 +14,10 @@ use Newpixel\GeographyCRUD\App\Http\Requests\CityRequest as UpdateRequest;
 class CityCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation { store as traitStore; }
+    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation { update as traitUpdate; }
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\ReorderOperation;
 
     public function setup()
     {
@@ -28,20 +29,13 @@ class CityCrudController extends CrudController
         $this->crud->setModel('Newpixel\GeographyCRUD\App\Models\City');
         $this->crud->setRoute(config('backpack.base.route_prefix').'/city');
         $this->crud->setEntityNameStrings('oras', 'orase');
+    }
 
-        $this->crud->allowAccess('reorder');
-        $this->crud->enableReorder('name', 1);
+    public function setupListOperation()
+    {
+        // $this->crud->addButtonFromView('line', 'city_hotels', 'city_hotels', 'beginning');
 
-        $this->crud->addButtonFromView('line', 'city_hotels', 'city_hotels', 'beginning');
-        /*
-        |--------------------------------------------------------------------------
-        | CrudPanel Configuration
-        |--------------------------------------------------------------------------
-        */
-
-        // TODO: remove setFromDb() and manually define Fields and Columns
-        // $this->crud->setFromDb();
-
+        // calls to addColumn, addFilter, addButton, etc
         $this->crud->addColumns([
             [
                 'name'      => 'row_number',
@@ -138,6 +132,13 @@ class CityCrudController extends CrudController
             }
         );
 
+    }
+
+    public function setupCreateOperation()
+    {
+        $this->crud->setValidation(StoreRequest::class);
+
+        // calls to addField
         $this->crud->addFields(
             [
                 [
@@ -177,14 +178,14 @@ class CityCrudController extends CrudController
                     'wrapperAttributes' => ['class' => 'form-group col-md-12'],
                 ],
                 [
-                    'name'              => 'short_info',
+                    'name'              => 'short_details',
                     'label'             => 'Informatii succinte',
                     'type'              => 'textarea',
                     'tab'               => 'General',
                     'wrapperAttributes' => ['class' => 'form-group col-md-12'],
                 ],
                 [
-                    'name'              => 'details',
+                    'name'              => 'full_details',
                     'label'             => 'Detalii',
                     'type'              => 'wysiwyg',
                     'tab'               => 'General',
@@ -228,26 +229,39 @@ class CityCrudController extends CrudController
             ]
         );
 
-        // add asterisk for fields that are required in CityRequest
-        $this->crud->setRequiredFields(StoreRequest::class, 'create');
-        $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
+    }
+
+    public function setupUpdateOperation()
+    {
+        // calls to addField
+        $this->setupCreateOperation(); // if it's the same as Create
+    }
+
+    public function setupShowOperation()
+    {
+        // calls to addColumn
+        $this->setupListOperation(); // if you want it to have the same columns as List
+    }
+
+    protected function setupReorderOperation()
+    {
+        $this->crud->set('reorder.label', 'name'); // the attribute on the Model which will be shown on draggable elements
+        $this->crud->set('reorder.max_level', 1); // how deep do you want to allow the nesting
     }
 
     public function store(StoreRequest $request)
     {
-        // your additional operations before save here
-        $redirect_location = parent::storeCrud($request);
-        // your additional operations after save here
-        // use $this->data['entry'] or $this->crud->entry
+        // ..
+        $redirect_location = $this->traitStore($request);
+        // ..
         return $redirect_location;
     }
 
     public function update(UpdateRequest $request)
     {
-        // your additional operations before save here
-        $redirect_location = parent::updateCrud($request);
-        // your additional operations after save here
-        // use $this->data['entry'] or $this->crud->entry
+        // ..
+        $redirect_location = $this->traitUpdate($request);
+        // ..
         return $redirect_location;
     }
 }
