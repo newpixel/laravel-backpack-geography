@@ -75,14 +75,14 @@ class City extends Model
         return $this->country->continent();
     }
 
-    public function hotels()
+    public function units()
     {
-        return $this->hasMany('Newpixel\GeographyCRUD\App\Models\Hotel');
+        return $this->hasMany('Newpixel\GeographyCRUD\App\Models\Units');
     }
 
-    public function hotelsAllInclusive()
+    public function unitsAllInclusive()
     {
-        return $this->hasMany('Newpixel\GeographyCRUD\App\Models\Hotel')->isAllInclusive();
+        return $this->hasMany('Newpixel\GeographyCRUD\App\Models\Units')->isAllInclusive();
     }
 
     public function offers()
