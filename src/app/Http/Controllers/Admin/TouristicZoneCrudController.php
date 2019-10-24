@@ -5,8 +5,8 @@ namespace Newpixel\GeographyCRUD\App\Http\Controllers\Admin;
 // VALIDATION: change the requests to match your own file names if you need form validation
 use Backpack\CRUD\CrudPanel;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
-use Newpixel\GeographyCRUD\App\Http\Requests\TouristicZoneRequest as StoreRequest;
-use Newpixel\GeographyCRUD\App\Http\Requests\TouristicZoneRequest as UpdateRequest;
+use Newpixel\GeographyCRUD\app\Http\Requests\TouristicZoneRequest as StoreRequest;
+use Newpixel\GeographyCRUD\app\Http\Requests\TouristicZoneRequest as UpdateRequest;
 
 /**
  * Class TouristicZoneCrudController.

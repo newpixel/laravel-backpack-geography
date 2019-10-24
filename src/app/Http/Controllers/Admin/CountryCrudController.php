@@ -4,8 +4,8 @@ namespace Newpixel\GeographyCRUD\App\Http\Controllers\Admin;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
 use Backpack\CRUD\app\Http\Controllers\CrudController;
-use Newpixel\GeographyCRUD\App\Http\Requests\CountryRequest as StoreRequest;
-use Newpixel\GeographyCRUD\App\Http\Requests\CountryRequest as UpdateRequest;
+use Newpixel\GeographyCRUD\app\Http\Requests\CountryRequest as StoreRequest;
+use Newpixel\GeographyCRUD\app\Http\Requests\CountryRequest as UpdateRequest;
 
 /**
  * Class CountryCrudController.
