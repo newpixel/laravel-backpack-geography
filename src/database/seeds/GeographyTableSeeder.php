@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Newpixel\GeographyCRUD\App\Models\Country;
 use Newpixel\GeographyCRUD\App\Models\Continent;
 
 class GeographyTableSeeder extends Seeder
