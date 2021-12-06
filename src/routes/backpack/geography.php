@@ -10,9 +10,9 @@
 */
 Route::group([
     'namespace' => 'Newpixel\GeographyCRUD\app\Http\Controllers\Admin',
-        'prefix' => config('backpack.base.route_prefix', 'admin'),
-        'middleware' => ['web', backpack_middleware()],
-    ], function () {
+    'prefix' => config('backpack.base.route_prefix', 'admin'),
+    'middleware' => ['web', backpack_middleware()],
+], function () {
         Route::crud('continent', 'ContinentCrudController');
         Route::crud('country', 'CountryCrudController');
         Route::crud('city', 'CityCrudController');
