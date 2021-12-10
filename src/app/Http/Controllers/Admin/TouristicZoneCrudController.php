@@ -3,13 +3,14 @@
 namespace Newpixel\GeographyCRUD\app\Http\Controllers\Admin;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
-use Backpack\CRUD\CrudPanel;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
+use Backpack\CRUD\CrudPanel;
 use Newpixel\GeographyCRUD\app\Http\Requests\TouristicZoneRequest as StoreRequest;
 use Newpixel\GeographyCRUD\app\Http\Requests\TouristicZoneRequest as UpdateRequest;
 
 /**
  * Class TouristicZoneCrudController.
+ *
  * @property-read CrudPanel $crud
  */
 class TouristicZoneCrudController extends CrudController

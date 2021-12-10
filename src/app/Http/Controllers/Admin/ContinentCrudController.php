@@ -9,6 +9,7 @@ use Newpixel\GeographyCRUD\app\Http\Requests\ContinentRequest as UpdateRequest;
 
 /**
  * Class ContinentCrudController.
+ *
  * @property-read CrudPanel $crud
  */
 class ContinentCrudController extends CrudController
@@ -36,8 +37,8 @@ class ContinentCrudController extends CrudController
                 'orderable' => false,
             ],
             [
-               'name' => 'name',
-               'label' => 'Denumire',
+                'name' => 'name',
+                'label' => 'Denumire',
             ],
         ]);
 

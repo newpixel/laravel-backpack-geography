@@ -9,6 +9,7 @@ use Newpixel\GeographyCRUD\app\Http\Requests\CountryRequest as UpdateRequest;
 
 /**
  * Class CountryCrudController.
+ *
  * @property-read CrudPanel $crud
  */
 class CountryCrudController extends CrudController
@@ -41,16 +42,16 @@ class CountryCrudController extends CrudController
                 'orderable' => false,
             ],
             [
-               'name' => 'name',
-               'label' => 'Denumire',
+                'name' => 'name',
+                'label' => 'Denumire',
             ],
             [
-               'name' => 'continent_id',
-               'label' => 'Continent',
-               'type' => 'select',
-               'entity' => 'continent',
-               'attribute' => 'name',
-               'model' => 'Newpixel\GeographyCRUD\App\Models\Continent',
+                'name' => 'continent_id',
+                'label' => 'Continent',
+                'type' => 'select',
+                'entity' => 'continent',
+                'attribute' => 'name',
+                'model' => 'Newpixel\GeographyCRUD\App\Models\Continent',
             ],
             [
                 'name' => 'display_zone',

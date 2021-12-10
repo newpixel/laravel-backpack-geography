@@ -2,8 +2,8 @@
 
 namespace Newpixel\GeographyCRUD\app\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Newpixel\GeographyCRUD\App\Models\City;
 

@@ -9,6 +9,7 @@ use Newpixel\GeographyCRUD\app\Http\Requests\CityRequest as UpdateRequest;
 
 /**
  * Class CityCrudController.
+ *
  * @property-read CrudPanel $crud
  */
 class CityCrudController extends CrudController
@@ -44,20 +45,20 @@ class CityCrudController extends CrudController
                 'orderable' => false,
             ],
             [
-               'name'  => 'name',
-               'label' => 'Denumire',
+                'name'  => 'name',
+                'label' => 'Denumire',
             ],
             [
-               'name'  => 'operator_code',
-               'label' => 'COD',
+                'name'  => 'operator_code',
+                'label' => 'COD',
             ],
             [
-               'name'      => 'country_id',
-               'label'     => 'Tara',
-               'type'      => 'select',
-               'entity'    => 'country',
-               'attribute' => 'name',
-               'model'     => 'Newpixel\GeographyCRUD\App\Models\Country',
+                'name'      => 'country_id',
+                'label'     => 'Tara',
+                'type'      => 'select',
+                'entity'    => 'country',
+                'attribute' => 'name',
+                'model'     => 'Newpixel\GeographyCRUD\App\Models\Country',
             ],
             [
                 'name' => 'display_zone',
