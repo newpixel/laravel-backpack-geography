@@ -1,6 +1,6 @@
 <?php
 
-namespace Newpixel\GeographyCRUD\App\Http\Controllers\Admin;
+namespace Newpixel\GeographyCRUD\app\Http\Controllers\Admin;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
 use Backpack\CRUD\app\Http\Controllers\CrudController;

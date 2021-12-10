@@ -1,6 +1,6 @@
 <?php
 
-namespace Newpixel\GeographyCRUD\App\Http\Controllers\Api;
+namespace Newpixel\GeographyCRUD\app\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace Newpixel\GeographyCRUD\app\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
