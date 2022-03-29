@@ -21,7 +21,7 @@
         }
     ],
     "require": {
-        "php": "^7.2",
+        "php": "^7.4|^8.0",
         "backpack/crud": "3.5.*|3.6.*|^4.0.0",
         "cviebrock/eloquent-sluggable": "^7.0|^8.0"
     },
