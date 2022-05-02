@@ -48,7 +48,7 @@ class Country extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
-    public function sluggable()
+    public function sluggable(): array
     {
         return [
             'slug' => ['source' => 'slug_or_name'],
