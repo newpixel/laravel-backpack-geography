@@ -187,7 +187,7 @@ class CityCrudController extends CrudController
                 [
                     'name'              => 'full_details',
                     'label'             => 'Detalii',
-                    'type'              => 'wysiwyg',
+                    'type'              => 'tinymce',
                     'tab'               => 'General',
                     'wrapperAttributes' => ['class' => 'form-group col-md-12'],
                 ],
